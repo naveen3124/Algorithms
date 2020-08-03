@@ -43,7 +43,12 @@ class Simulation
 public:
 	bool issafe(int r, int c)
 	{
-		return (r >= 0 && c >= 0 && c < size && r < size && !visited[r][c]);
+		return ((r >= 0) && (c >= 0) && (c < size) && (r < size));
+	}
+	bool issafeandopen(int r, int c)
+	{
+		return ((r >= 0) && (c >= 0) && (c < size)&& (r < size)&& (visited[r][c]));
+
 	}
 	int find_set(int v) {
 		if (v == parent[v])
@@ -73,7 +78,7 @@ public:
 	{
 		infected_sites = 0;
 		size = n;
-		ispercolating = true;
+		ispercolating = false;
 		grid = new char* [n];
 		visited = new bool* [n];
 		int tmp = n * n;
@@ -105,29 +110,42 @@ public:
 		int cur_id = findId(r, c);
 		if (!issafe(r, c))
 			return;
+		if(!visited[r][c])
+			infected_sites++;
+
 		visited[r][c] = true;
-		infected_sites++;
 		//top
-		if (issafe(r-1,c)) {
+		if (issafeandopen(r-1,c)) {
 			int top = findId(r - 1, c);
 			union_sets(cur_id, top);
 		};
 		//right
-		if (issafe(r, c+1)) {
+		if (issafeandopen(r, c+1)) {
 			int right = findId(r , c+1);
 			union_sets(cur_id, right);
 		};
 		//bottom
-		if (issafe(r + 1, c)) {
+		if (issafeandopen(r + 1, c)) {
 			int bottom = findId(r + 1, c);
 			union_sets(cur_id, bottom);
 		};
 		//left
-		if (issafe(r, c - 1)) {
+		if (issafeandopen(r, c - 1)) {
 			int left = findId(r, c - 1);
 			union_sets(cur_id, left);
 		};
 
+	}
+	void display()
+	{
+		for (int i = 0; i < size; i++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				cout << visited[i][j] << " ";
+			}
+			cout << endl;
+		}
 	}
 	bool isconnected(int row, int col) {
 		int id = findId(row, col);
@@ -170,13 +188,13 @@ public:
 
 int main()
 {
-	int simulations;
+	int simulations = 50;
 	cout << "enter no of trails" << endl;
-	cin >> simulations;
+	//cin >> simulations;
 	double* percolate_threshold_array = new double[simulations];
-	int n;
+	int n = 100;
 	cout << "enter square grid size" << endl;
-	cin >> n;
+	//cin >> n;
 	for (int i = 0; i < simulations; i++) {
 		Simulation* sim = new Simulation(n);
 		// we infect until we have percolation
@@ -187,7 +205,7 @@ int main()
 				sim->infect(row, col);
 		}
 		int infected_sites = sim->noofinfected();
-		double res = (double)infected_sites / (n * n);
+		double res = (double)infected_sites / (double) (n * n);
 		percolate_threshold_array[i] = res;
 		delete sim;
 	}
@@ -198,6 +216,7 @@ int main()
 		p_thres += percolate_threshold_array[i];
 	}
 	p_thres = (double)(p_thres / simulations); 
+	cout <<"pthreshold is" << p_thres << endl;
 	delete[]percolate_threshold_array;
 	return 0;
 }
