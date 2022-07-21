@@ -5,6 +5,12 @@ class Solution {
             return 0;
         int[][] dp = new int[k+1][n];
         
+        /* dp[k+1][n] : dim k : transactions dimn : number of days max profit for k transactions with n days 
+           dp[i][j] = max { dp[i][j-1] no transaction,
+                            price[j] - (price[m] + dp[i-1][m-1]) m = 0 ...  j - 1)  
+                            current price on jth selling day  - any best buy price before j i.e mth day +  best price before mth day  and in previous transaction 
+        */
+        
         for (int i =0; i<=k; i++) {
             for(int j=0; j<n; j++) {
                 dp[i][j] = 0;
