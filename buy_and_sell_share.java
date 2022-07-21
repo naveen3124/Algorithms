@@ -26,7 +26,7 @@ class Solution {
                 int buyTodayAndProfit = bestBuy /* previous buy and sell transaction + best buy */ +
                                         prices[j] /* buy today */;
                 dp[i][j] = Math.max(DontbuyToday, buyTodayAndProfit);
-                if (bestBuy < dp[i-1][j-1] - prices[j]) // profit i got in previous transaction (if done) -  current selling price gives the best cost price so far 
+                if (bestBuy < dp[i-1][j-1] - prices[j]) // profit i got in previous transaction (if done) -  current selling price if greater than the best cost price so far, then that was the current bestbuy for next transaction 
                     bestBuy = dp[i-1][j-1] - prices[j];                    
                 
             }            
