@@ -1,0 +1,7 @@
+1. Implement laxport mutual exclusion using python rabbit mq
+2. Implement vasudevan's election in adhoc network by building a tree
+3. Implement Consistent hashing using the Toporing 
+4. Implement Helbret curves to find n-dimensional index closest points
+5. Implement multi paxos 
+6. Implement Chord ring
+  
