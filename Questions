@@ -16,4 +16,8 @@ So, when you refer to the "file cache," you are essentially talking about a subs
 
 
 
+3. he GitHub repository you've mentioned, "https://github.com/iovisor/bcc," is the official repository for the "BPF Compiler Collection" (BCC). BCC is an open-source project aimed at providing a set of tools and libraries for working with the extended Berkeley Packet Filter (eBPF) technology on Linux systems. Here's why this repository exists and what it contains:
 
+eBPF Technology: eBPF is a powerful and flexible in-kernel technology that allows users to run custom programs inside the Linux kernel, primarily for the purpose of networking and performance analysis. eBPF programs are used to trace, filter, and manipulate network packets, system calls, and other kernel events.
+
+BCC Toolset: BCC is a set of user-space tools and libraries that leverage eBPF to provide a wide range of capabilities for tracing and analyzing Linux systems. It enables developers and administrators to write and deploy eBPF programs without having to write kernel modules directly.
