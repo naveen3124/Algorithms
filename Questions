@@ -1,4 +1,4 @@
-isn't file cache also a buffer cache  as file data exists in disk
+1. isn't file cache also a buffer cache  as file data exists in disk?
 
 
 The term "file cache" is often used interchangeably with "buffer cache" in many contexts, and the two concepts are closely related. Both involve caching data from disk in memory to improve system performance. However, there can be some nuances in terminology and usage.
@@ -11,6 +11,8 @@ File Cache: The file cache is a specific subset of the buffer cache that refers 
 
 So, when you refer to the "file cache," you are essentially talking about a subset of the buffer cache that caches file data. In many contexts, especially in discussions related to file systems and file I/O, these terms are used interchangeably because file data is a significant part of what is cached in memory.
 
+
+2. cachestat is a tool that can be used to monitor Linux page cache hit/miss ratios. It works by tracing kernel page cache functions using dynamic tracing. cachestat can be used to identify performance bottlenecks and to tune workloads for better performance.
 
 
 
