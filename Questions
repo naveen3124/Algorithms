@@ -1,0 +1,17 @@
+isn't file cache also a buffer cache  as file data exists in disk
+
+
+The term "file cache" is often used interchangeably with "buffer cache" in many contexts, and the two concepts are closely related. Both involve caching data from disk in memory to improve system performance. However, there can be some nuances in terminology and usage.
+
+Here's a clarification:
+
+Buffer Cache: The buffer cache is a general term used to describe caching mechanisms for both file data and raw blocks or sectors of data read from or written to storage devices (e.g., hard drives or SSDs). In this sense, the buffer cache encompasses caching at the block level. When data is read from or written to storage, it's temporarily stored in memory buffers (blocks) to reduce the overhead of disk I/O operations.
+
+File Cache: The file cache is a specific subset of the buffer cache that refers to the caching of file data, such as the content of files, directories, and metadata (e.g., file attributes). While the buffer cache can also include cached blocks that are not directly related to files (e.g., blocks from the file system's own data structures), the file cache specifically deals with file-related data.
+
+So, when you refer to the "file cache," you are essentially talking about a subset of the buffer cache that caches file data. In many contexts, especially in discussions related to file systems and file I/O, these terms are used interchangeably because file data is a significant part of what is cached in memory.
+
+
+
+
+
